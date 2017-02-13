@@ -88,4 +88,6 @@
 AIDL을 사용하지 않고 Service에서 커스텀 Binder객체를 구현할 때는 위에처럼...
 
  #### Parcel
- 앞의 예에서 보듯 바인더 트랜잭션에서는 보통 트랜잭션 데이터를 함께 전달, 이 데이터를 parcel이라고 부르는데, 안드의 parcel은 자바 SE의 Serializable 객채와 비교해볼 수있다. 두 객체의 차이점은 parcelable인터페이스를 사용할 떄는 객체의 마샬링 및 언마샬링을 직접 구현해야 한다는 점. 이 인터페이스에서는 다음과 같이 객체를 Parcel로 쓰는 두 메서드와 Parcel로부터 객체를 읽는 코드를 구현하는 static final Creator 객체를 정의. 
+ 앞의 예에서 보듯 바인더 트랜잭션에서는 보통 트랜잭션 데이터를 함께 전달, 이 데이터를 parcel이라고 부르는데, 안드의 parcel은 자바 SE의 Serializable 객채와 비교해볼 수있다. 두 객체의 차이점은 parcelable 인터페이스를 사용할 떄는 객체의 마샬링 및 언마샬링을 직접 구현해야 한다는 점. 이 인터페이스에서는 다음과 같이 객체를 Parcel로 쓰는 두 메서드와 Parcel로부터 객체를 읽는 코드를 구현하는 static final Creator 객체를 정의.
+
+ http://d2.naver.com/helloworld/47656 참고.

@@ -40,10 +40,10 @@ TODO
 25 - 3부 15장 숨겨진 안드로이드 API
 나머지는 그때 상황봐서 더 진행할지 안할지 정하기.
 
-![one](https://github.com/LenKIM/Pushing_the_Limits_and_android/blob/master/one.jpeg)
+![KakaoTalk_Photo_2017-02-13-11-22-39_41](http://i.imgur.com/07PSbOb.jpg)
 
-![two](https://github.com/LenKIM/Pushing_the_Limits_and_android/blob/master/two.jpeg)
+![KakaoTalk_Photo_2017-02-13-11-22-37_80](http://i.imgur.com/4t4dAt6.jpg)
 
-![three](https://github.com/LenKIM/Pushing_the_Limits_and_android/blob/master/three.jpeg)
+![KakaoTalk_Photo_2017-02-13-11-22-34_54](http://i.imgur.com/eoutph4.jpg)
 
 표시된 것만 빼고 일단 진행.
