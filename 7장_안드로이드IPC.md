@@ -8,7 +8,7 @@
 
   안드로이드API에서는 IPC를 손쉽게 수행할 수 있는 멋진 래퍼를 제공해주므로 대게는 바인더를 가지고 저수준 작업을 할 일이 거의 없다. 이 장에서는 바인더가 어떻게 동작하는지 살펴보자.
 
-  > ### 바인더 살펴보기
+> ### 바인더 살펴보기
 
 바인더 IPC를 사용해 두 애플리케이션이 통신할 때 어플은 이 커널 트라이버를 사용해 메시지를 전달한다. 메시징 기능 외에도 바인더는 원격 호출자(프로세스ID 및 사용자ID) 식별, 원격 프로세스의 소멸(소멸링크) 알림 같은 부가 기능을 제공한다.
 
@@ -18,7 +18,7 @@
 
  안드에서는 Binder기저 클래스 및 IBinder인터페이스를 사용해 바인더를 구현, Service에서 원격API를 발행할 경우에는 보통 AIDL파일을 사용해 이 IBinder 구현체를 생성한다. 이 방식 외에 다른 방식도 사용할 수 있다.
 
- #### 바인더 주소
+#### 바인더 주소
 
   바인더를 통해 통신하려면 클라이언트가 원격 Binder객체의 주소를 알아야 한다. 하지만 Binder의 설계상 구현체에서는 주소를 알 수 있다. 이로 인해 Intent를 사용해 안드로이드 API에 접근하게 된다. 클라이언트는 액션 String이나 ComponentName을 사용해 Intent 객체를 생성하고, 이 인텐트를 사용해 원격 어플과 통신할 수 있다. 하지만 Intent는 실제 바인더 주소의 추상화일 뿐이며, 통신을 설정하려면 변환돼야 한다.
 
@@ -28,10 +28,11 @@
 
    Service나 다른 컴포넌트와 통신하려는 클라이언트는 Intent 해석 과정을 통해 암시적으로 ServiceManager에 문의해 바인더 주소를 가져오게 된다.
 
-   #### 바인더 트랜잭션
+#### 바인더 트랜잭션
 
    안드로이드에서 한 프로세스가 다른 프로세스로 데이터를 전송하면 이를 트랜잭션이라고 부른다. 트랜잭션은 클라이언트에서 바인더를 가지고 IBinder.transact()를 호출해 시작할 수 있으며, 그럼 서비스는 다음의 코드에서 보듯 Binder.onTransact()메서드를 통해 호출을 받는다.
 
+```java
      public class TransactionClient {
 
      public String performCustomBinderTransacttion(IBinder binder, String arg0,
@@ -57,9 +58,11 @@
      }
 
     }
+```
 
 이 예제 코드는 유효한 IBinder 참조를 가져온 후 클라이언트사이드 코드에서 Service를 상대로 커스텀 바인더 트랜잭션을 수행하는 법을 잘 보여줌.
 
+```java
     public class CustomBinder extends Binder {
 
         @Override
@@ -83,11 +86,11 @@
             // TODO Build the result
             return result;
         }
-
+```
 
 AIDL을 사용하지 않고 Service에서 커스텀 Binder객체를 구현할 때는 위에처럼...
 
- #### Parcel
+#### Parcel
  앞의 예에서 보듯 바인더 트랜잭션에서는 보통 트랜잭션 데이터를 함께 전달, 이 데이터를 parcel이라고 부르는데, 안드의 parcel은 자바 SE의 Serializable 객채와 비교해볼 수있다. 두 객체의 차이점은 parcelable 인터페이스를 사용할 떄는 객체의 마샬링 및 언마샬링을 직접 구현해야 한다는 점. 이 인터페이스에서는 다음과 같이 객체를 Parcel로 쓰는 두 메서드와 Parcel로부터 객체를 읽는 코드를 구현하는 static final Creator 객체를 정의.
 
  http://d2.naver.com/helloworld/47656 참고.
